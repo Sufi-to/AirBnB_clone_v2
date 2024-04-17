@@ -1,15 +1,17 @@
 #!/usr/bin/python3
 """This module defines a class to manage file storage for hbnb clone"""
 import json
-
+import shlex
 
 class FileStorage:
     """This class manages storage of hbnb models in JSON format"""
     __file_path = 'file.json'
     __objects = {}
 
-    def all(self):
+    def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
+        for key in FileStorage.__objects:
+            prkey.split('.')[0]
         return FileStorage.__objects
 
     def new(self, obj):
@@ -48,3 +50,9 @@ class FileStorage:
                         self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
+
+    def delete(self, obj=None):
+        """ Delete an existing instance of a model """
+        if obj:
+            del_obj = f"{type(obj).__name__}.{obj.id}"
+            del self.__objects[del_obj]
