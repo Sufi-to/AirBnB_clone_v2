@@ -119,17 +119,15 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
 
-        allArguments = args.split()
-        theClass = allArguments[0]
-        if theClass not in HBNBCommand.classes:
+        line = args.split()
+        theModel = line[0]
+        if theModel not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
         keyVs = {}
-        for i in range(1, len(allArguments)):
-            theParameters = allArguments[i].split("=", 1)
-            # if len(theParameters) != 2:
-            #     print("** Thats not the right parameter format broski. **")
-            key, value = theParameters
+        for i in range(1, len(line)):
+            model_args = line[i].split("=", 1)
+            key, value = model_args
 
             if value.startswith('"') and value.endswith('"'):
                 value = value[1:-1].replace('_', ' ').replace('\\"', '"')
@@ -139,7 +137,7 @@ class HBNBCommand(cmd.Cmd):
                 value = int(value)
             keyVs[key] = value
         # try:
-        new_instance = HBNBCommand.classes[theClass](**keyVs)
+        new_instance = HBNBCommand.classes[theModel](**keyVs)
         storage.save()
         print(new_instance.id)
         storage.save()
