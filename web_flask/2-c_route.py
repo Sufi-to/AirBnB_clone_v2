@@ -18,6 +18,7 @@ def hbnb_route():
 
 @app.route("/c/<text>", strict_slashes=False)
 def c_hbnb_route(text):
+    print(text)
     up_text = ""
     if "_" in text:
         up_text = "C "
