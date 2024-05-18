@@ -39,7 +39,7 @@ def python_cool(text):
 
 @app.route("/number/<int:n>", strict_slashes=False)
 def is_number(n):
-	return f"{n} is a Number"
+    return f"{n} is a number"
 
 
 if __name__ == '__main__':
