@@ -2,6 +2,7 @@
 """Start a Flask web application. group city by states"""
 from models import storage
 from flask import Flask, render_template
+from models.state import State
 
 app = Flask(__name__)
 
@@ -9,7 +10,7 @@ app = Flask(__name__)
 @app.route("/cities_by_states", strict_slashes=False)
 def cities_states():
     """Display an html page with cities grouped by states."""
-    states = storage.all("State")
+    states = storage.all(State)
     return render_template("8-cities_by_states.html", states=states)
 
 
