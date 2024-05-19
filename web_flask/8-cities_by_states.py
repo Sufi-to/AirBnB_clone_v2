@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Starts a Flask web application. group city by states"""
+"""Start a Flask web application. group city by states"""
 from models import storage
 from flask import Flask, render_template
 
