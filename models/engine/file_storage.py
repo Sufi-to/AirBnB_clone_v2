@@ -63,3 +63,7 @@ class FileStorage:
         if obj:
             del_obj = f"{type(obj).__name__}.{obj.id}"
             del self.__objects[del_obj]
+
+    def close(self):
+        """Closes the file storage engine."""
+        self.reload()
